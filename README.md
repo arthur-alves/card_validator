@@ -1,4 +1,4 @@
-# A Single page that validate credit card with custom rules
+# A Single page to validate credit card with custom rules
 
 
 # Install:
@@ -8,7 +8,7 @@
 sudo pip install virtualenv && sudo pip install virtualenvwrapper
 ```
 
-[External Link Virtualenvwrapper](http://virtualenvwrapper.readthedocs.io/en/latest/install.html)
+[How to Virtualenvwrapper](http://virtualenvwrapper.readthedocs.io/en/latest/install.html)
 
 
 ### Create a virtualenv and install requirements.txt
