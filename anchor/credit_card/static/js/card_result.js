@@ -73,7 +73,7 @@
 // Result process component
 
 var ResultComponent = React.createClass({
-	displayName: 'ResultComponent',
+	displayName: "ResultComponent",
 
 	getInitialState: function () {
 		return {};
@@ -92,8 +92,18 @@ var ResultComponent = React.createClass({
 		}
 
 		return React.createElement(
-			'ul',
-			{ className: 'list-group' },
+			"ul",
+			{ className: "list-group" },
+			React.createElement(
+				"li",
+				{ className: "list-group-item justify-content-between card-header primary-color-dark white-text" },
+				"Card Number",
+				React.createElement(
+					"span",
+					{ className: "badge  badge-pill" },
+					"Status"
+				)
+			),
 			this.state.results.map(this.mountItems)
 		);
 	},
@@ -107,11 +117,11 @@ var ResultComponent = React.createClass({
 		var badge_class = item[1].toLowerCase() == 'invalid' ? 'danger' : 'success';
 
 		return React.createElement(
-			'li',
-			{ className: 'list-group-item justify-content-between', key: idx },
+			"li",
+			{ className: "list-group-item justify-content-between", key: idx },
 			item[0],
 			React.createElement(
-				'span',
+				"span",
 				{ className: "badge badge-" + badge_class + " badge-pill" },
 				item[1]
 			)
@@ -122,14 +132,14 @@ var ResultComponent = React.createClass({
 // Error Component
 
 var ErrorComponent = React.createClass({
-	displayName: 'ErrorComponent',
+	displayName: "ErrorComponent",
 
 	render: function () {
 		return React.createElement(
-			'div',
-			{ className: 'text-center' },
+			"div",
+			{ className: "text-center" },
 			React.createElement(
-				'span',
+				"span",
 				{ className: "badge badge-danger badge-pill" },
 				this.props.error
 			)

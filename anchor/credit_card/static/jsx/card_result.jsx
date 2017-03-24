@@ -19,6 +19,13 @@ var ResultComponent = React.createClass({
 
 		return (
 			<ul className="list-group">
+
+			    <li className="list-group-item justify-content-between card-header primary-color-dark white-text">
+			        Card Number
+			        <span className={"badge  badge-pill"}>
+			        	Status
+			        </span>
+			    </li>
 				{this.state.results.map(this.mountItems)}
 			</ul>
 		)
