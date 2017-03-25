@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 And also need to create your "local_settings.py" on path "anchor/anchor/"
-and just put "DEBUG=TRUE" in this.
+and in this file, just add "DEBUG=TRUE".
 
 
 ### Run Project (Migrate is not necessary, but you can make it):
