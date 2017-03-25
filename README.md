@@ -46,7 +46,7 @@ python manage.py test
 
 ### Webpack monitor
 
-This project uses react and webpack to show results when process files. You'll
+This project uses react and webpack to show results when process jsx files to common js files. You'll
 need install Node and npm too. So after that, to compile jsx,
 go to the app "anchor/credit_card/static/" path and use command:
 
