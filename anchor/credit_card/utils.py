@@ -3,8 +3,13 @@ import re
 from itertools import groupby
 
 
-def valid_card_brand(card_number):
+def validate_card_number(card_number):
     """Validation credit card number."""
+    if not card_number:
+        return "Invalid"
+
+    card_number = card_number.strip()
+
     start_numbers = [4, 5, 6]
     try:
         only_digits = re.sub('[^0-9]', '', card_number)

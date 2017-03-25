@@ -68,15 +68,17 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 // Result process component
+
 
 var ResultComponent = React.createClass({
 	displayName: "ResultComponent",
 
 	getInitialState: function () {
-		return {};
+		return { "error": false, "results": false };
 	},
 	componentDidMount: function () {
 		window.emitter.addChangeListener(this.updateResult);
@@ -87,7 +89,7 @@ var ResultComponent = React.createClass({
 			return null;
 		}
 
-		if (state.error) {
+		if (state.error && !state.results) {
 			return React.createElement(ErrorComponent, { error: state.error });
 		}
 
@@ -96,7 +98,7 @@ var ResultComponent = React.createClass({
 			{ className: "list-group" },
 			React.createElement(
 				"li",
-				{ className: "list-group-item justify-content-between card-header primary-color-dark white-text" },
+				{ className: "list-group-item justify-content-between card-header primary-color white-text" },
 				"Card Number",
 				React.createElement(
 					"span",
@@ -110,6 +112,8 @@ var ResultComponent = React.createClass({
 	updateResult: function (results) {
 		if (results) {
 			this.setState(results);
+		} else {
+			this.setState(this.getInitialState());
 		}
 	},
 	mountItems: function (item, idx) {

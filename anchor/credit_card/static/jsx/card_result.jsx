@@ -1,8 +1,8 @@
 // Result process component
-
+"use strict"
 var ResultComponent = React.createClass({
 	getInitialState: function() {
-		return {}
+		return {"error": false, "results": false}
 	}
 	, componentDidMount: function() {
 		window.emitter.addChangeListener(this.updateResult)
@@ -13,14 +13,14 @@ var ResultComponent = React.createClass({
 			return null
 		}
 
-		if(state.error){
+		if(state.error && !state.results){
 			return <ErrorComponent error={state.error}/>
 		}
 
 		return (
 			<ul className="list-group">
 
-			    <li className="list-group-item justify-content-between card-header primary-color-dark white-text">
+			    <li className="list-group-item justify-content-between card-header primary-color white-text">
 			        Card Number
 			        <span className={"badge  badge-pill"}>
 			        	Status
@@ -33,6 +33,8 @@ var ResultComponent = React.createClass({
 	, updateResult: function(results){
 		if(results){
 			this.setState(results)
+		}else{
+			this.setState(this.getInitialState())
 		}
 	}
 	, mountItems: function(item, idx){

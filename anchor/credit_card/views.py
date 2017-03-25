@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-import rows
 from django.views import View
 from django.shortcuts import render
 from django.http import JsonResponse
-from .utils import valid_card_brand
+from .utils import validate_card_number
 
 
 class CreditCardValidate(View):
@@ -20,16 +19,21 @@ class CreditCardValidate(View):
         if not request.is_ajax():
             return JsonResponse({"error": "Wrong request"})
 
+        invalid_file = {"error": "Invalid file"}
+
         file = request.FILES.get("file")
 
-        if not file:
-            return JsonResponse({"error": "Invalid file"})
+        if not file or not file.content_type == u'text/plain':
+            return JsonResponse(invalid_file)
 
         card_numbers = file.read().split("\n")
 
         card_numbers = [i for i in card_numbers if i]
 
         number = card_numbers.pop(0)
+
+        if not len(card_numbers) > 1:
+            return JsonResponse(invalid_file)
 
         try:
             if 0 > int(number) > 100:
@@ -40,7 +44,10 @@ class CreditCardValidate(View):
         except:
             return JsonResponse({"error": "Wrong number in first line"})
 
-        output = [[c, valid_card_brand(c)] for c in card_numbers]
+        output = [[c, validate_card_number(c)] for c in card_numbers]
+
+        if not output:
+            return JsonResponse(invalid_file)
 
         return JsonResponse({"results": output})
 

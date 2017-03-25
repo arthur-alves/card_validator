@@ -28,8 +28,8 @@
 
         <div class="flex-center flex-column animated fadeIn">
 
-            <div class="card text-center">
-                <div class="card-header primary-color-dark white-text">
+            <div class="card text-center" style="width: 31%;">
+                <div class="card-header primary-color white-text">
                     <h1 class="mb-1"><i class="fa fa-credit-card" aria-hidden="true"></i> Credit Card Validate</h1>
                 </div>
 
@@ -39,21 +39,25 @@
 
                 <form id="upload_file" action="{% url 'credit_card:credit_card_index' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
                     <p class="mb-1">Select your file to upload and validate several card numbers.</p>
-                    <div class="file-field text-center">
-                        <div class="btn btn-primary btn-sm">
-                            <label for="file" class="">Upload File</label>
-                            <input type="file" name="file" id="file">
+                    <div class="file-field">
+                        <div class="col-md-12">
+                            <div class="btn btn-primary btn-sm">
+                                <label for="file" class="">Upload File</label>
+                                <input type="file" name="file" id="file">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <small id="file_path" style="border-bottom: 1px solid rgba(0, 0, 0, 0.5); width: 100%;">
+
+                            </small>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
                     <hr>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Send and validate</button>
-
-                    </div>
                 </form>
 
 
-                <div class="card-footer text-muted primary-color-dark white-text">
+                <div class="card-footer text-muted primary-color white-text">
                     By Arthur A. Souza
                     <div class="text=center" id="loading_spin" style="display:none;">
                         <big><i class="fa fa-refresh fa-spin"></i></big>
