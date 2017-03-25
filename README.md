@@ -25,6 +25,10 @@ and
 pip install -r requirements.txt
 ```
 
+And also need to create your "local_settings.py" on path "anchor/anchor/"
+and just put "DEBUG=TRUE" in this.
+
+
 ### Run Project (Migrate is not necessary, but you can make it):
 
 
@@ -39,5 +43,24 @@ So you can test the application. You can also run tests with:
 python manage.py test
 ```
 
+
+### Webpack monitor
+
+This project uses react and webpack to show results when process files. You'll
+need install Node and npm too. So after that, to compile jsx,
+go to the app "anchor/credit_card/static/" path and use command:
+
+```
+npm install
+```
+
+and
+
+
+```
+webpack -w
+```
+
+To auto-compile "card_result.jsx".
 
 Enjoy
