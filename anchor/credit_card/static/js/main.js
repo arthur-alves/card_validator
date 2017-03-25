@@ -21,6 +21,23 @@ $(document).ready(function() {
    $("#file").on("change", function(){
    		window.emitter.addResult(null);
    		if(this.value){
+   		   	var type = this.files[0].type;
+   		   	if(type != "text/plain"){
+   				window.emitter.addResult(
+   					{"error": "Invalid file type"},
+   					{"results": []}
+   				);
+   				return
+   		   	}
+
+   			var size = this.files[0].size;
+   			if(size > 1024 * 1024 * 5){
+   				window.emitter.addResult(
+   					{"error": "This file exceeds 5MB"},
+   					{"results": []}
+   				);
+   				return
+   			}
    			var value = this.value.split(/(\\|\/)/g).pop();
    			$("#file_path").html("<b>LAST SENT</b>: " + value);
    			$("#upload_file").ajaxSubmit(options);

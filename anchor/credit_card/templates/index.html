@@ -36,6 +36,9 @@
 
                     <form id="upload_file" action="{% url 'credit_card:credit_card_index' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
                         <p class="mb-1">Select your file to upload and validate several card numbers.</p>
+                        <p>
+                            <small>Max Size 5MB</small>
+                        </p>
                         <div class="file-field">
                             <div class="col-sm-12">
                                 <div class="btn btn-primary btn-sm">
