@@ -13,3 +13,12 @@ input[type=file]{
     opacity: 0;
 }
 .fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}
+.responsive_card{
+	width: 31%;
+}
+
+@media only screen and (max-width: 1024px) {
+	.responsive_card{
+		width: 95%;
+	}
+}
